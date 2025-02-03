@@ -1,6 +1,5 @@
 import random
-from tkinter import *
-from tkinter import ttk
+from tkinter import Button, Frame, Label, Tk, Toplevel
 
 
 class Game2048:
@@ -24,7 +23,15 @@ class Game2048:
         for r in range(4):
             row = []
             for c in range(4):
-                label = Label(self.frame, text="", width=4, height=2, font=("Arial", 24), fg="white", relief="ridge")
+                label = Label(
+                    self.frame,
+                    text="",
+                    width=4,
+                    height=2,
+                    font=("Arial", 24),
+                    fg="white",
+                    relief="ridge",
+                )
                 label.grid(row=r, column=c, padx=5, pady=5)
                 row.append(label)
             self.cells.append(row)
@@ -33,7 +40,10 @@ class Game2048:
         for r in range(4):
             for c in range(4):
                 value = self.grid[r][c]
-                self.cells[r][c].config(text=str(value) if value else "", bg="lightblue" if value else "lightgreen")
+                self.cells[r][c].config(
+                    text=str(value) if value else "",
+                    bg="lightblue" if value else "lightgreen",
+                )
 
     def place_random_tile(self):
         empty_cells = [(r, c) for r in range(4) for c in range(4) if self.grid[r][c] == 0]
